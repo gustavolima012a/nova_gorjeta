@@ -18,6 +18,7 @@
     --beatle-green: #547878;
     --topaz: #26c2ae;
     --reagent-grey: #7f9d9f;
+    --water-leaf: #9febdf;
 }
 
 body{
@@ -95,12 +96,17 @@ main{
             border-radius: .5rem;
             padding-block: .6rem;
             font-weight: 700;
-
-            &:focus{
-                background-color: var(--topaz);
-                transition: 1s;
-            }
         }
+            button:hover{
+                background-color: var(--water-leaf);
+                transition: .3s;
+                cursor: pointer;
+            }
+            
+            .button-selected{
+                background: var(--topaz);
+            }
+        
 
         input{
             width: 100%;
@@ -159,5 +165,50 @@ main{
         border: none;
         padding-block: .9rem;
         border-radius: .5rem;
+    }
+    button:hover{
+        background: var(--water-leaf);
+        cursor: pointer;
+        transition: .3s;
+    }
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button{
+    display: none;
+}
+
+@media(min-width: 920px){
+    header{
+        margin-top: 5rem;
+    }
+
+    main{
+        display: flex;
+        max-width: 92rem;
+        margin-inline: auto;
+        border-radius: 2.5rem;
+        padding: 4.8rem;
+        gap: 4.8rem;
+
+        section{
+            width: 100%;
+        }
+        .info .tip div{
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .results {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+
+            .amout strong,
+            .total strong {
+                font-size: 4.8rem;
+            }
+        }
+        
     }
 }
