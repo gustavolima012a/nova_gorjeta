@@ -1,83 +1,78 @@
-let bill = 0
-let tipPercentage = 0
-let numberOfPeople = 0
-let buttonSelected = null
+let bill = 0;
+let tipPercentage = 0;
+let numberOfPeople = 0;
+let buttonSelected = null;
 
 function receiveBillValue() {
-    bill = document.querySelector("#bill").ValueAsNumber
-
-    calculateResult()
+    bill = document.querySelector("#bill").valueAsNumber;
+    calculateResults();
 }
 
 function receiveNumberOfPeopleValue() {
-    numberOfPeople = document.querySelector("#people").valueAsNumber
-
-    calculeteResults()
+    numberOfPeople = document.querySelector("#people").valueAsNumber;
+    calculateResults();
 }
 
 function receiveTipPercentageValue(value) {
-    tipPercentage = value / 100
+    tipPercentage = value / 100;
 
-    removeClassButtonSelected()
+    removeClassButtonSelected();
 
-    document.querySelector("#custom-tip").value = ""
+    document.querySelector("#custom-tip").value = "";
 
-    buttonSelected = document.querySelector('#button-${value}')
-    buttonSelected = classList.add("button-selected")
+    buttonSelected = document.querySelector(`#button-${value}`);
+    buttonSelected.classList.add("button-selected");
 
-    calculeteResults()
+    calculateResults();
 }
 
-function receiveCustomTipPercentageValue(){
-    tipPercentege = document.querySelector("#custom-tip").valueAsNumber / 100
-    console.log(tipPercentage)
+function receiveCustomTipPercentageValue() {
+    tipPercentage = document.querySelector("#custom-tip").valueAsNumber / 100;
+    console.log(tipPercentage);
 
-    removeClassButtonSelected()
+    removeClassButtonSelected();
 
-    calculeteResults()
+    calculateResults();
 }
 
 function removeClassButtonSelected() {
     if (buttonSelected !== null) {
-        buttonSelected.classList.remove("button-selected")
-        buttonSelected = null
+        buttonSelected.classList.remove("button-selected");
+        buttonSelected = null;
     }
 }
 
-function calculeteResults(){
-    if(bill !== 0 && tipPorcentage !== 0 && numberOfPeople !==0){
-       let  tipAmountPerson = calculateTipAmountPerson()
-       AmoucalculateTotalPerson(tipAmountPerson)
+function calculateResults() {
+    if (bill !== 0 && tipPercentage !== 0 && numberOfPeople !== 0) {
+        let tipAmountPerPerson = calculateTipAmountPerPerson();
+        calculateTotalPerPerson(tipAmountPerPerson);
     }
 }
 
-function calculateTipAmountPerson(){
-    let tipAmountStrong = document.querySelector(".amount strong")
-    let tipAmountPerson = bill * tipPercentage / numberOfPeople
-    tipAmountStrong.textContent = '$${tipAmountPerson.toFixed(2)}'
-    return tipAmountPerson
+function calculateTipAmountPerPerson() {
+    let tipAmountStrong = document.querySelector(".amount strong");
+    let tipAmountPerPerson = (bill * tipPercentage) / numberOfPeople;
+    tipAmountStrong.textContent = `$${tipAmountPerPerson.toFixed(2)}`;
+    return tipAmountPerPerson;
 }
 
-function calculateTotalPerson(tipAmountPerson){
-    let totalStrong = document.querySelector(".total strong")
-    let totalAmountperson = bill / numberPeople + tipAmountPerson
-    totalStrong.textContent = '$${totalAmountPerson.toFixed(2)}'
-    
+function calculateTotalPerPerson(tipAmountPerPerson) {
+    let totalStrong = document.querySelector(".total strong");
+    let totalAmountPerPerson = bill / numberOfPeople + tipAmountPerPerson;
+    totalStrong.textContent = `$${totalAmountPerPerson.toFixed(2)}`;
 }
 
-function reset(){
-    bill = 0
-    document.querySelector("#bill").value = ""
+function reset() {
+    bill = 0;
+    document.querySelector("#bill").value = "";
 
-    tipPercentage = 0
-    removeClassButtonSelected()
-    document.querySelector("#custom-tip").value = ""
+    tipPercentage = 0;
+    removeClassButtonSelected();
+    document.querySelector("#custom-tip").value = "";
 
-    numberOfPeople = 0
-    document.querySelector("#people").value = ""
+    numberOfPeople = 0;
+    document.querySelector("#people").value = "";
 
-    document.querySelector("#.total strong").textContent = "0.00"
-    document.querySelector("#.amout strong").textContent = "0.00"
-
-
+    document.querySelector(".total strong").textContent = "$0.00";
+    document.querySelector(".amount strong").textContent = "$0.00";
 }
